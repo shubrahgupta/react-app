@@ -1,24 +1,53 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Chatbot from './Chatbot';
 import './App.css';
 
 function App() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    window.location.href = '/chatbot';
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <div className="landing-page">
+            <div className="content-wrapper">
+              <div className="heading-section">
+                <h1 className="title">ChatWave</h1>
+                <p className="subtitle">Experience conversations reimagined</p>
+              </div>
+
+            <div className="overlay">
+              {/* <h1>Let me help you !</h1> */}
+              {/* <p>Where are you?</p> */}
+              <div className="search-container">
+              <label htmlFor="message" className="label">
+              What would you like to talk about?
+            </label>
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  placeholder="Enter your text here"
+                />
+                
+              </div>
+              <button onClick={handleButtonClick}>Go to Chatbot</button>
+            </div>
+            </div>
+          </div>
+        } />
+        <Route path="/chatbot" element={<Chatbot />} />
+      </Routes>
+    </Router>
   );
 }
 
