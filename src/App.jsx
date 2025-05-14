@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Chatbot from './Chatbot';
+import ChatUI from './Chatbot';
 import './App.css';
 
 function App() {
@@ -40,12 +40,12 @@ function App() {
                 />
                 
               </div>
-              <button onClick={handleButtonClick}>Go to Chatbot</button>
+              <button onClick={handleButtonClick}>Submit</button>
             </div>
             </div>
           </div>
         } />
-        <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/chatbot" element={<ChatUI />} />
       </Routes>
     </Router>
   );

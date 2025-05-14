@@ -36,7 +36,9 @@ const Chatbot = () => {
           placeholder="Type a message..."
         />
         <button onClick={handleSendMessage}>Send</button>
-      </div>
+      
+        </div>
+        
     </div>
   );
 };
